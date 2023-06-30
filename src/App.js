@@ -189,7 +189,7 @@ class App extends React.Component {
         <AppBar position="static" sx={{ backgroundColor: '#19d2b3' }}>
           <Toolbar>
             <Typography fontWeight="bold" variant="h5" component="div" style={{ flexGrow: 1 }}>
-              Product Name
+              Product
             </Typography>
             <Button onClick={this.Main} value="login" variant="contained" style={this.topButtons} sx={{ backgroundColor: 'white', color: '#19d2b3', height: '26px', ':hover': { backgroundColor: '#19d2b3', color: 'white' } }}>Login</Button>
             <Button onClick={this.Main} value="signup" variant="contained" style={this.topButtons} sx={{ backgroundColor: 'white', color: '#19d2b3', height: '26px', ':hover': { backgroundColor: '#19d2b3', color: 'white' } }}>Sign Up</Button>
