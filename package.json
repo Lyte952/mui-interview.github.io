@@ -1,7 +1,8 @@
 {
-  "name": "mui-interview.github.io",
+  "name": "mui-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lyte952.github.io/mui-react/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
