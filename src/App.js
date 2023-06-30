@@ -1,11 +1,12 @@
 import React from 'react';
-import { Card, CardContent, TextField, AppBar, Toolbar, Typography, Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { Card, CardContent, TextField, AppBar, Toolbar, Typography, Button, Divider, Stack, Box, Chip} from '@mui/material';
 
 class Login extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
+      //csv file needed, but I'm using this.state as a substitute
       username: "johndoe",
       password: "jaydee",
       username2: "",
@@ -14,17 +15,17 @@ class Login extends React.Component {
   }
 
   handleChange = (event) => {
-    if (event.target.id=="username"){
+    if (event.target.id==="username"){
     this.setState({
         username2: event.target.value
-    });}else if(event.target.id=="password") {
+    });}else if(event.target.id==="password") {
         this.setState({
             password2: event.target.value
         });}
   };      
 
   handleClick = () => {
-    if(this.state.username2 == this.state.username && this.state.password2 == this.state.password) {
+    if(this.state.username2 === this.state.username && this.state.password2 === this.state.password) {
       alert("Username matches password✔︎")
     }else {
       alert("Incorrect username or password!!!")
@@ -55,12 +56,12 @@ class Login extends React.Component {
     return (
       <div>
         <div style={this.containerStyle}>
-          <Typography style={{ margin: '20px', fontSize: '40px', color: '#19d2b3', marginBottom: '80px' }}>Login</Typography>
+          <Typography style={{ margin: '20px', fontSize: '40px', color: '#19d2b3', marginBottom: '80px', fontWeight: 'bold' }}>Login</Typography>
           <Card>
             <CardContent style={this.containerStyle}>
               <TextField id="username" onChange={this.handleChange} type="text" variant="outlined" placeholder="Username" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
               <TextField id="password" onChange={this.handleChange} type="password" variant="outlined" placeholder="Password" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
-              <Typography sx={{marginBottom: '10px'}}>Forgot password?</Typography>
+              <Chip label="Forgot/reset password" clickable="true" variant="filled" sx={{marginBottom: '10px', width: '174px', color: '#19d2b3'}}></Chip>
               <Button onClick={this.handleClick} variant="contained" style={this.buttonStyle} sx={{ backgroundColor: '#19d2b3', ':hover': { backgroundColor: 'white', color: '#19d2b3' } }}>Submit</Button>
             </CardContent>
           </Card>
@@ -71,6 +72,37 @@ class Login extends React.Component {
 }
 
 class Signup extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      name: "",
+      prefUsername: "",
+      password: "",
+      confirmPassword: "",
+      faveColor: ""
+    }
+  }
+
+
+  handleChange = (event) => {
+    if (event.target.id==="name"){
+    this.setState({
+        name: event.target.value
+    });}else if(event.target.id==="prefUsername") {
+        this.setState({
+            prefUsername: event.target.value
+        });}else if(event.target.id==="password") {
+          this.setState({
+              password: event.target.value
+          });}else if(event.target.id==="confirmPassword") {
+            this.setState({
+                confirmPassword: event.target.value
+            });}else if(event.target.id==="faveColor") {
+              this.setState({
+                  faveColor: event.target.value
+              });}
+  };
 
   containerStyle = {
     display: 'flex',
@@ -96,14 +128,24 @@ class Signup extends React.Component {
     return (
       <div>
         <div style={this.containerStyle}>
-          <Typography style={{ margin: '20px', fontSize: '40px', color: '#19d2b3', marginBottom: '80px' }}>Signup</Typography>
+          <Typography style={{ margin: '20px', fontSize: '40px', color: '#19d2b3', marginBottom: '10px', fontWeight: 'bold' }}>Signup</Typography>
           <Card>
             <CardContent style={this.containerStyle}>
-              <TextField type="text" variant="outlined" placeholder="Name" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
-              <TextField type="password" variant="outlined" placeholder="Preferred username" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
-              <TextField type="password" variant="outlined" placeholder="Password" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
-              <TextField type="password" variant="outlined" placeholder="Confirm password" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
-              <TextField type="text" variant="outlined" placeholder="Your favorite color" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
+              <Box sx={{ p: 2, display: 'flex' }}>
+              <Stack alignItems="center" >
+              <TextField onChange={this.handleChange} id="name" sx={{ m : '10px', width: '260px' }} type="text" variant="outlined" placeholder="Name" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
+              <TextField onChange={this.handleChange} id="prefUsername" sx={{ m : '10px', width: '260px' }} type="text" variant="outlined" placeholder="Preferred username" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
+              </Stack>
+              </Box>
+              <Divider />
+              <Box sx={{ p: 2, display: 'flex' }}>
+              <Stack alignItems="center" >
+              <TextField onChange={this.handleChange} id="password" sx={{ m : '10px', width: '260px' }} type="text" variant="outlined" placeholder="Password" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
+              <TextField onChange={this.handleChange} id="confirmPassword" sx={{ m : '10px', width: '260px' }} type="text" variant="outlined" placeholder="Confirm password" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
+              </Stack>
+              </Box>
+              <Divider />
+              <TextField onChange={this.handleChange} id="faveColor" sx={{ m : '10px', width: '260px' }} type="text" variant="outlined" placeholder="Your favorite color" style={this.textFieldStyle} InputProps={{ style: { borderColor: '#19d2b3' } }} />
               <Button variant="contained" style={this.buttonStyle} sx={{ backgroundColor: '#19d2b3', ':hover': { backgroundColor: 'white', color: '#19d2b3' } }}>Submit</Button>
             </CardContent>
           </Card>
@@ -146,7 +188,7 @@ class App extends React.Component {
       <div>
         <AppBar position="static" sx={{ backgroundColor: '#19d2b3' }}>
           <Toolbar>
-            <Typography variant="h6" component="div" style={{ flexGrow: 1 }}>
+            <Typography fontWeight="bold" variant="h5" component="div" style={{ flexGrow: 1 }}>
               Product Name
             </Typography>
             <Button onClick={this.Main} value="login" variant="contained" style={this.topButtons} sx={{ backgroundColor: 'white', color: '#19d2b3', height: '26px', ':hover': { backgroundColor: '#19d2b3', color: 'white' } }}>Login</Button>
@@ -157,9 +199,9 @@ class App extends React.Component {
         <RenderMain />
 
         <div>
-          <Card sx={{ bgcolor: '#00a388', marginTop: '200px' }}>
+          <Card sx={{ bgcolor: '#00a388', marginTop: '100px', height: '140px' }}>
             <CardContent>
-              <Typography sx={{ textAlign: 'center', color: 'white' }}>Login or Sign Up to enjoy the features of our product!!!</Typography>
+              <Typography sx={{ textAlign: 'center', color: 'white' }}>Login or Sign up to enjoy the features of our product!!!</Typography>
             </CardContent>
           </Card>
         </div>
